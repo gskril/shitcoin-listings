@@ -10,8 +10,8 @@ const discord = require('./discord.js')
 			'--no-sandbox',
 			'--disable-setuid-sandbox',
 			'--disable-dev-shm-usage',
-			'headless: true',
 		],
+		headless: true
 	})
 	const page = await browser.newPage()
 	page.setUserAgent(
@@ -36,12 +36,14 @@ async function monitor(page, round, lastCheck) {
 			const row = cryptoRows[i]
 			const cryptoCells = row.querySelectorAll('td')
 			const cryptoName = cryptoCells[2].querySelector('p').innerText
+			const cryptoSymbol = cryptoCells[2].querySelector('p.coin-item-symbol').innerText
 			const cryptoLink = cryptoCells[2].querySelector('a').href
 			const cryptoIcon = cryptoCells[2].querySelector('img').src
 			const cryptoPrice = cryptoCells[3].innerText
 			const cryptoChain = cryptoCells[8].innerText
 			cryptoData.push({
 				name: cryptoName,
+				symbol: cryptoSymbol,
 				icon: cryptoIcon,
 				link: cryptoLink,
 				chain: cryptoChain,
@@ -67,6 +69,7 @@ async function monitor(page, round, lastCheck) {
 		// Add address to object with new coin data
 		const newCoin = {
 			name: cryptoList[0].name,
+			symbol: cryptoList[0].symbol,
 			icon: cryptoList[0].icon,
 			link: cryptoList[0].link,
 			price: cryptoList[0].price,

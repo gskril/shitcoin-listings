@@ -8,6 +8,7 @@ sendDiscordMsg = (coin) => {
 		.setDescription(`Chart it on [PooCoin](https://poocoin.app/tokens/${coin.address})\nTrade it on [PancakeSwap](https://pancakeswap.finance/swap)`)
 		.setThumbnail(coin.icon)
 		.addField('**Name**', coin.name, true)
+		.addField('**Symbol**', coin.symbol, true)
 		.addField('**Price**', coin.price, true)
 		.addField('**Address**', coin.address, false)
 
