@@ -90,6 +90,7 @@ async function monitor(page, round, lastCheck) {
 	await page.waitForTimeout(60 * 1000)
 	monitor(page, round + 1, lastCheck)
 		.catch(err => {
-			console.log('Error starting monitor', err)
+			console.log('Error restarting monitor, shutting down.', err)
+			process.exit(0)
 		})
 }
