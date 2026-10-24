@@ -1,6 +1,7 @@
 require('./server.js')
 require('dotenv').config()
 const puppeteer = require('puppeteer')
+const { setTimeout: delay } = require('node:timers/promises')
 const discord = require('./discord.js')
 
 // Launch browser and keep open
@@ -87,7 +88,7 @@ async function monitor(page, round, lastCheck) {
 	lastCheck = cryptoList
 
 	// Wait 1 minute before refreshing page and checking again
-	await page.waitForTimeout(60 * 1000)
+	await delay(60 * 1000)
 	monitor(page, round + 1, lastCheck)
 		.catch(err => {
 			console.log('Error restarting monitor, shutting down.', err)

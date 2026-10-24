@@ -10,7 +10,7 @@
     "discord-webhook-node": "^1.1.8",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "puppeteer": "^8.0.0"
+    "puppeteer": "24.43.1"
   },
   "engines": {
     "node": ">=22.23.4 <23"
